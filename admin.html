@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neko Chef | Admin Panel</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff41; /* Klassieke hacker groen */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #00ff41;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            border: 1px solid #00ff41;
+            padding: 20px;
+            background: #111;
+        }
+
+        button {
+            background: #00ff41;
+            color: #000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #ff3860;
+            display: block;
+            margin-top: 30px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>[ADMIN ACCESS GRANTED]</h1>
+    <p>Welcome back, Neko Chef. System status: <strong>Online</strong></p>
+
+    <div class="dashboard">
+        <div class="card">
+            <h3>Live Bestellingen</h3>
+            <p>Nog geen nieuwe pre-orders vandaag.</p>
+        </div>
+        <div class="card">
+            <h3>Voorraadbeheer</h3>
+            <p>Status: Zeewierchips (8/20)</p>
+            <button onclick="alert('Voorraad bijgewerkt naar 20!')">Reset Voorraad</button>
+        </div>
+    </div>
+
+    <a href="index.html"><< Terug naar de Underground Store</a>
+
+    <script>
+        // Een extra beveiliging: als ze deze pagina direct openen zonder inloggen, stuur ze weg!
+        // (Niet 100% waterdicht, maar houdt normale mensen tegen)
+        if (document.referrer === "") {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
