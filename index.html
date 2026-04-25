@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neko Chef | Exclusieve Snacks & Sushi</title>
+    <style>
+        :root {
+            --main-color: #1a1a1a;
+            --accent-color: #ff4757;
+            --bg-color: #f4f4f4;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--main-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .status-banner {
+            background: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .menu-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .stock {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .order-info {
+            background: #e1e1e1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .menu-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>NEKO CHEF 🐾</h1>
+    <p><i>The Best Underground Snacks in Alkmaar</i></p>
+</header>
+
+<div class="container">
+    <div class="status-banner">
+        VOORRAAD UPDATE: Bestel vóór 09:00 voor levering in de grote pauze!
+    </div>
+
+    <h2>Op het Menu</h2>
+    <div class="menu-section">
+        <div class="card">
+            <h3>Neko's Zeewierchips</h3>
+            <p>Super knapperig en uniek. Rechtstreeks van de toko.</p>
+            <span class="price">€ 1,50</span>
+            <span class="stock">Voorraad: 8 zakjes</span>
+        </div>
+
+        <div class="card">
+            <h3>Asian Cookies</h3>
+            <p>Zoete koekjes die perfect samengaan met je pauze.</p>
+            <span class="price">€ 1,00</span>
+            <span class="stock">Voorraad: 12 stuks</span>
+        </div>
+
+        <div class="card">
+            <h3>Special Drink</h3>
+            <p>Exclusieve frisdrank uit Azië. Verfrissend!</p>
+            <span class="price">€ 2,00</span>
+            <span class="stock">Voorraad: 5 blikjes</span>
+        </div>
+
+        <div class="card">
+            <h3>Neko Chef Sushi Box</h3>
+            <p>Verse vega sushi (komkommer/avocado). Beperkt beschikbaar!</p>
+            <span class="price">€ 4,50</span>
+            <span class="stock"><b>Pre-order Only</b></span>
+        </div>
+    </div>
+
+    <div class="order-info">
+        <h3>Hoe bestel je?</h3>
+        <p>Vind me bij de kluisjes in de ochtend of stuur een bericht via het bekende kanaal.</p>
+        <p><strong>Betaalmethode:</strong> Contant of Tikkie (na school).</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Neko Chef Enterprises - Alkmaar branch
+</footer>
+
+</body>
+</html>
