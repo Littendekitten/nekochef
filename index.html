@@ -3,161 +3,603 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neko Chef | Exclusieve Snacks & Sushi</title>
+    <title>Neko Chef 🐾 | Premium Underground Sushi & Snacks | Alkmaar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --main-color: #1a1a1a;
-            --accent-color: #ff4757;
-            --bg-color: #f4f4f4;
-            --card-bg: #ffffff;
+            /* Kleurenpalet - Modern & Scherp */
+            --bg-dark: #0d0d0d; /* Bijna zwart */
+            --bg-panel: #1a1a1a; /* Donkergrijs voor panels */
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent: #ff3860; /* Neon rood/pink voor actie */
+            --accent-hover: #ff5c7c;
+            --sushi-green: #00db84; /* Groen voor voorraad */
+            
+            /* Fonts */
+            --font-main: 'Poppins', sans-serif;
+            --font-jp: 'Noto Sans JP', sans-serif;
+            
+            /* Shadows & Border Radius */
+            --shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--main-color);
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* --- HEADER --- */
         header {
-            background-color: var(--card-bg);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid var(--accent-color);
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid #2a2a2a;
+            box-shadow: var(--shadow);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            /* Zorg dat je logo.png in dezelfde map staat! */
+            background-image: url('logo.png'); 
+            background-size: cover;
+            background-position: center;
         }
 
-        .status-banner {
-            background: var(--accent-color);
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .brand-name span {
+            color: var(--accent);
+        }
+
+        .jp-text {
+            font-family: var(--font-jp);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-left: 5px;
+        }
+
+        .cart-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--accent);
             color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(13,13,13,1)), url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-weight: bold;
+            margin-top: 80px; /* Ruimte voor fixed header */
+            padding: 0 20px;
         }
 
-        .menu-section {
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin: 15px 0 30px 0;
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Status Banner */
+        .status-banner {
+            background-color: #2a2a2a;
+            border-left: 5px solid var(--accent);
+            color: var(--text-main);
+            padding: 15px 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 40px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        /* MENU GRID */
+        .menu-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+        .product-card {
+            background-color: var(--bg-panel);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            border: 1px solid #2a2a2a;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(255, 56, 96, 0.2);
+            border-color: #444;
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: var(--accent-color);
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Product details */
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+
+        .product-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            height: 40px; /* Vastzetten voor grid uitlijning */
+            overflow: hidden;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
         }
 
         .price {
-            font-weight: bold;
-            font-size: 1.2rem;
-            display: block;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .stock-status {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--sushi-green);
+        }
+
+        .stock-status.low {
+            color: #ffb800;
+        }
+
+        .stock-status.preorder {
+            color: #ac84ff;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px;
+            border-radius: var(--radius-md);
+            margin-top: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* --- HOW IT WORKS --- */
+        .how-it-works {
+            margin: 80px 0;
+            background-color: var(--bg-panel);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 1px solid #2a2a2a;
+        }
+
+        .how-it-works h3 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            padding: 20px;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .step-card h4 {
+            font-weight: 700;
             margin: 10px 0;
         }
 
-        .stock {
+        .step-card p {
+            color: var(--text-muted);
             font-size: 0.9rem;
-            color: #666;
         }
 
-        .order-info {
-            background: #e1e1e1;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-            text-align: center;
-        }
-
+        /* --- FOOTER --- */
         footer {
+            background-color: var(--bg-panel);
+            padding: 40px 30px;
             text-align: center;
-            padding: 20px;
-            font-size: 0.8rem;
-            color: #888;
+            border-top: 2px solid #2a2a2a;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 600px) {
-            .menu-section { grid-template-columns: 1fr; }
+        /* --- VISUEEL WINKELMANDJE PANEL (Simulatie) --- */
+        #cart-panel {
+            position: fixed;
+            top: 0;
+            right: -400px; /* Verborgen */
+            width: 350px;
+            height: 100vh;
+            background-color: var(--bg-panel);
+            box-shadow: -8px 0 30px rgba(0,0,0,0.8);
+            z-index: 2000;
+            padding: 30px;
+            transition: right 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+            border-left: 2px solid var(--accent);
+        }
+
+        #cart-panel.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .cart-total {
+            border-top: 2px solid #2a2a2a;
+            padding-top: 20px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-checkout {
+            background-color: var(--accent);
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+        }
+
+        /* Mobiele responsiviteit */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.2rem; }
+            .how-it-works { padding: 20px; }
+            #cart-panel { width: 100%; right: -100%; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>NEKO CHEF 🐾</h1>
-    <p><i>The Best Underground Snacks in Alkmaar</i></p>
+    <div class="logo-container">
+        <div class="logo-img"></div>
+        <div class="brand-name">NEKO<span>CHEF</span></div>
+        <span class="jp-text">猫シェフ</span>
+    </div>
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒 <span class="cart-count" id="cart-count">0</span>
+    </div>
 </header>
+
+<section class="hero">
+    <h2>Neko Chef's Secret Menu</h2>
+    <p>Premium Japanse snacks en dagvers gemaakte sushi, exclusief voor de ingewijden in Alkmaar. Mis de drop niet.</p>
+    <a href="#menu" class="btn-primary">Bekijk Menu</a>
+</section>
 
 <div class="container">
     <div class="status-banner">
-        VOORRAAD UPDATE: Bestel vóór 09:00 voor levering in de grote pauze!
+        <div>🚨 VOLGENDE DROP: Maandag Pauze</div>
+        <div>Bestel vóór 09:00 uur</div>
     </div>
 
-    <h2>Op het Menu</h2>
-    <div class="menu-section">
-        <div class="card">
-            <h3>Neko's Zeewierchips</h3>
-            <p>Super knapperig en uniek. Rechtstreeks van de toko.</p>
-            <span class="price">€ 1,50</span>
-            <span class="stock">Voorraad: 8 zakjes</span>
-        </div>
+    <main id="menu">
+        <div class="menu-grid">
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1611145367651-6303b46e4040?q=80&w=2070');"></div>
+                <div class="product-details">
+                    <div class="product-category">Snacks</div>
+                    <h3 class="product-title">Zeewier Chips 🍃</h3>
+                    <p class="product-description">Super knapperige nori strips met een ziltige kick.</p>
+                    <div class="product-meta">
+                        <span class="price">€ 1,50</span>
+                        <span class="stock-status">8 op voorraad</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Zeewier Chips', 1.50)">Pre-Order</button>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>Asian Cookies</h3>
-            <p>Zoete koekjes die perfect samengaan met je pauze.</p>
-            <span class="price">€ 1,00</span>
-            <span class="stock">Voorraad: 12 stuks</span>
-        </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1558961303-1d202105fd57?q=80&w=1964');"></div>
+                <div class="product-details">
+                    <div class="product-category">Koekjes</div>
+                    <h3 class="product-title">Asian Cookies 🍪</h3>
+                    <p class="product-description">Zoete, brosse koekjes perfect voor de pauze.</p>
+                    <div class="product-meta">
+                        <span class="price">€ 1,00</span>
+                        <span class="stock-status low">Slechts 12 over</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Asian Cookies', 1.00)">Pre-Order</button>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>Special Drink</h3>
-            <p>Exclusieve frisdrank uit Azië. Verfrissend!</p>
-            <span class="price">€ 2,00</span>
-            <span class="stock">Voorraad: 5 blikjes</span>
-        </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1622591668273-0f7f3a8b4179?q=80&w=1974');"></div>
+                <div class="product-details">
+                    <div class="product-category">Dranken</div>
+                    <h3 class="product-title">Special Drink 🥤</h3>
+                    <p class="product-description">Verfrissende, exclusieve Aziatische frisdrank.</p>
+                    <div class="product-meta">
+                        <span class="price">€ 2,00</span>
+                        <span class="stock-status">5 blikjes</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Special Drink', 2.00)">Pre-Order</button>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>Neko Chef Sushi Box</h3>
-            <p>Verse vega sushi (komkommer/avocado). Beperkt beschikbaar!</p>
-            <span class="price">€ 4,50</span>
-            <span class="stock"><b>Pre-order Only</b></span>
-        </div>
-    </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1579523622126-b434dc8109ed?q=80&w=1935');"></div>
+                <div class="product-details">
+                    <div class="product-category">Premium</div>
+                    <h3 class="product-title">Neko Sushi Box 🍣</h3>
+                    <p class="product-description">Dagverse Vega Rollen (8 stuks). Beperkte oplage!</p>
+                    <div class="product-meta">
+                        <span class="price">€ 4,50</span>
+                        <span class="stock-status preorder">Alleen Pre-Order</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Neko Sushi Box', 4.50)">Pre-Order</button>
+                </div>
+            </div>
 
-    <div class="order-info">
-        <h3>Hoe bestel je?</h3>
-        <p>Vind me bij de kluisjes in de ochtend of stuur een bericht via het bekende kanaal.</p>
-        <p><strong>Betaalmethode:</strong> Contant of Tikkie (na school).</p>
-    </div>
+        </div>
+    </main>
+
+    <section class="how-it-works">
+        <h3>Hoe Werkt Het? 🐈</h3>
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-icon">📱</div>
+                <h4>1. Bekijk Menu</h4>
+                <p>Check de website voor de nieuwste snacks en drops.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">📩</div>
+                <h4>2. Pre-Order</h4>
+                <p>Plaats je bestelling vóór 09:00 uur (via de site of gang).</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">🍱</div>
+                <h4>3. Ophalen</h4>
+                <p>Vind Neko Chef in de grote pauze bij de kluisjes.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">💶</div>
+                <h4>4. Betalen</h4>
+                <p>Contant of via Tikkie (stuur ik na school).</p>
+            </div>
+        </div>
+    </section>
 </div>
 
 <footer>
-    &copy; 2026 Neko Chef Enterprises - Alkmaar branch
+    <p>Neko Chef Enterprises | Alkmaar Branch | Underground Division</p>
+    <p style="font-size: 0.7rem; margin-top: 10px;">&copy; 2026. Alleen voor ingewijden. Niet praten tegen leraren.</p>
 </footer>
+
+<div id="cart-panel">
+    <div class="cart-header">
+        <h3>Je Pre-Order</h3>
+        <span class="close-cart" onclick="toggleCart()">&times;</span>
+    </div>
+    <div class="cart-items" id="cart-items-list">
+        <p style="color: var(--text-muted);">Je mandje is nog leeg... Drop wat lekkers!</p>
+    </div>
+    <div class="cart-total">
+        <span>Totaal:</span>
+        <span id="cart-total-price">€ 0,00</span>
+    </div>
+    <button class="btn-primary btn-checkout" onclick="checkoutInstructions()">Plaats Pre-Order</button>
+</div>
+
+<script>
+    let cart = [];
+    const cartCountEl = document.getElementById('cart-count');
+    const cartPanelEl = document.getElementById('cart-panel');
+    const cartItemsListEl = document.getElementById('cart-items-list');
+    const cartTotalPriceEl = document.getElementById('cart-total-price');
+
+    // Voeg item toe aan het mandje
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartUI();
+        
+        // Kleine animatie op het cart icoon
+        cartCountEl.style.transform = 'scale(1.3)';
+        setTimeout(() => cartCountEl.style.transform = 'scale(1)', 100);
+        
+        // Als het mandje dicht is, open het even kort
+        if (!cartPanelEl.classList.contains('open')) {
+            toggleCart();
+            setTimeout(toggleCart, 1500); // Sluit automatisch na 1.5s
+        }
+    }
+
+    // Update de visuele weergave van het mandje
+    function updateCartUI() {
+        // Update aantal
+        cartCountEl.innerText = cart.length;
+        
+        // Update lijst
+        if (cart.length === 0) {
+            cartItemsListEl.innerHTML = '<p style="color: var(--text-muted);">Je mandje is nog leeg... Drop wat lekkers!</p>';
+        } else {
+            cartItemsListEl.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.style.display = 'flex';
+                itemEl.style.justifyContent = 'space-between';
+                itemEl.style.marginBottom = '10px';
+                itemEl.style.borderBottom = '1fr solid #2a2a2a';
+                itemEl.style.paddingBottom = '5px';
+                itemEl.innerHTML = `<span>${item.name}</span><span>€ ${item.price.toFixed(2)}</span>`;
+                cartItemsListEl.appendChild(itemEl);
+                total += item.price;
+            });
+            // Update totaal
+            cartTotalPriceEl.innerText = `€ ${total.toFixed(2)}`;
+        }
+    }
+
+    // Open/sluit mandje panel
+    function toggleCart() {
+        cartPanelEl.classList.toggle('open');
+    }
+
+    // Laat instructies zien bij afrekenen
+    function checkoutInstructions() {
+        if (cart.length === 0) {
+            alert('Je mandje is leeg, slimpie!');
+            return;
+        }
+        alert('Oké ingewijde! Omdat we ondergronds werken, kun je hier niet direct betalen.\n\nVind Neko Chef in de ochtend bij de kluisjes of stuur me een berichtje via het bekende kanaal met je bestelling. Betaal contant of via Tikkie na school!');
+        toggleCart();
+    }
+</script>
 
 </body>
 </html>
