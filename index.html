@@ -12,13 +12,13 @@
     <style>
         :root {
             /* Kleurenpalet - Modern & Scherp */
-            --bg-dark: #0d0d0d; /* Bijna zwart */
-            --bg-panel: #1a1a1a; /* Donkergrijs voor panels */
+            --bg-dark: #0d0d0d;
+            --bg-panel: #1a1a1a;
             --text-main: #ffffff;
             --text-muted: #a0a0a0;
-            --accent: #ff3860; /* Neon rood/pink voor actie */
+            --accent: #ff3860;
             --accent-hover: #ff5c7c;
-            --sushi-green: #00db84; /* Groen voor voorraad */
+            --sushi-green: #00db84;
             
             /* Fonts */
             --font-main: 'Poppins', sans-serif;
@@ -127,7 +127,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            margin-top: 80px; /* Ruimte voor fixed header */
+            margin-top: 80px;
             padding: 0 20px;
         }
 
@@ -170,7 +170,6 @@
             padding: 0 20px;
         }
 
-        /* Status Banner */
         .status-banner {
             background-color: #2a2a2a;
             border-left: 5px solid var(--accent);
@@ -214,7 +213,6 @@
             background-position: center;
         }
 
-        /* Product details */
         .product-details {
             padding: 20px;
         }
@@ -238,7 +236,7 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 20px;
-            height: 40px; /* Vastzetten voor grid uitlijning */
+            height: 40px;
             overflow: hidden;
         }
 
@@ -338,11 +336,11 @@
             font-size: 0.9rem;
         }
 
-        /* --- VISUEEL WINKELMANDJE PANEL (Simulatie) --- */
+        /* --- VISUEEL WINKELMANDJE PANEL --- */
         #cart-panel {
             position: fixed;
             top: 0;
-            right: -400px; /* Verborgen */
+            right: -400px;
             width: 350px;
             height: 100vh;
             background-color: var(--bg-panel);
@@ -391,6 +389,18 @@
             width: 100%;
             margin-top: 20px;
             padding: 15px;
+        }
+
+        /* --- GEHEIME ADMIN KNOP --- */
+        .secret-btn {
+            position: fixed;
+            bottom: 5px;
+            left: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: transparent; /* Volledig onzichtbaar */
+            z-index: 9999;
+            cursor: default; /* Valt niet op als je erover hovert */
         }
 
         /* Mobiele responsiviteit */
@@ -535,6 +545,8 @@
     <button class="btn-primary btn-checkout" onclick="checkoutInstructions()">Plaats Pre-Order</button>
 </div>
 
+<div class="secret-btn" onclick="checkAdmin()"></div>
+
 <script>
     let cart = [];
     const cartCountEl = document.getElementById('cart-count');
@@ -560,10 +572,8 @@
 
     // Update de visuele weergave van het mandje
     function updateCartUI() {
-        // Update aantal
         cartCountEl.innerText = cart.length;
         
-        // Update lijst
         if (cart.length === 0) {
             cartItemsListEl.innerHTML = '<p style="color: var(--text-muted);">Je mandje is nog leeg... Drop wat lekkers!</p>';
         } else {
@@ -580,7 +590,6 @@
                 cartItemsListEl.appendChild(itemEl);
                 total += item.price;
             });
-            // Update totaal
             cartTotalPriceEl.innerText = `€ ${total.toFixed(2)}`;
         }
     }
@@ -598,6 +607,21 @@
         }
         alert('Oké ingewijde! Omdat we ondergronds werken, kun je hier niet direct betalen.\n\nVind Neko Chef in de ochtend bij de kluisjes of stuur me een berichtje via het bekende kanaal met je bestelling. Betaal contant of via Tikkie na school!');
         toggleCart();
+    }
+
+    // Geheime admin check
+    function checkAdmin() {
+        // Vraagt om input
+        let emailInput = prompt(""); 
+        
+        // Checkt of het exact klopt
+        if (emailInput === "littendekitten@gmail.com") {
+            // Yes! Stuur door naar admin pagina
+            window.location.href = "admin.html";
+        } else {
+            // Nope. Reload de pagina.
+            location.reload();
+        }
     }
 </script>
 
